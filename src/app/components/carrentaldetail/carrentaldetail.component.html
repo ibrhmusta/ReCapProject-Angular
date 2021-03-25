@@ -1,0 +1,54 @@
+
+<!-- Button trigger modal -->
+<div *ngIf="state==1" class="modal-body">
+  <div class="container">
+    <div class="row">
+      <div class="mb-3 col-5">
+        <div class="mt-2">
+          <label><h6>Rent Date :</h6></label>
+        </div>
+        <div class="ml-2">
+          <input type="date" class="form-control" [(ngModel)]="rentDate" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" 
+          (change)="onChangeEvent($event); checkReturnDate()" min="{{minDate}}"/>
+        </div>
+      </div>
+      <div class="mb-3 col-5">
+        <div class="mt-2">
+          <label><h6>Return Date :</h6></label>
+        </div>
+        <div class="ml-2">
+          <input type="date" class="form-control" [(ngModel)]="returnDate" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
+          disabled='{{!firstDateSelected}}' min="{{minDate}}" max="{{maxDate}}" />
+        </div>
+      </div>
+    </div>
+    <div>
+      
+      <select class="form-select" [(ngModel)]="customerId" style="width: 40%" aria-label="Default select example" >
+        <option selected>Customers</option>
+        <option *ngFor="let customer of customerDetails" [ngValue]="customer.customerID" >
+          {{ customer.firstName }} {{ customer.lastName }}
+        </option>
+      </select>
+
+    </div>
+  </div>
+  <div class="modal-footer mt-3">
+    <button (click)="addRentalCar()" type="button" class="btn btn-dark">
+      Rent This Car
+    </button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      Close
+    </button>
+  </div>
+</div>
+
+<!---2.modal-->
+
+<div *ngIf="state==2" class="modal-body">
+  <div class="container">
+      <app-payment></app-payment>
+      
+  </div>
+</div>
+

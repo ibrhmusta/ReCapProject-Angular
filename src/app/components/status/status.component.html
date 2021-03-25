@@ -1,0 +1,22 @@
+<ul class="list-group">
+  <li class="list-group-item bg-white" aria-disabled="true">
+    <div
+      class="btn w-100 text-start"
+      data-bs-toggle="collapse"
+      data-bs-target="#status"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      <h5>Status</h5>
+    </div>
+  </li>
+  <li
+    id="status"
+    (click)="doFilter(statu)"
+    routerLinkActive="active"
+    [class]="getCurrentStatuClass(statu)"
+    *ngFor="let statu of status"
+  >
+    <h6>{{ statu.name }}</h6>
+  </li>
+</ul>

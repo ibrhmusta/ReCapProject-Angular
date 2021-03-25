@@ -1,0 +1,22 @@
+<ul class="list-group">
+  <li class="list-group-item bg-white" aria-disabled="true">
+    <div
+      class="btn w-100 text-start"
+      data-bs-toggle="collapse"
+      data-bs-target="#color"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      <h5>Colors</h5>
+    </div>
+  </li>
+  <li
+    id="color"
+    (click)="doFilter(color)"
+    routerLinkActive="active"
+    [class]="getCurrentColorClass(color)"
+    *ngFor="let color of colors"
+  >
+    <h6>{{ color.colorName }}</h6>
+  </li>
+</ul>

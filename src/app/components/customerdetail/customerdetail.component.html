@@ -1,0 +1,19 @@
+<h4 style="text-align: center">Customers</h4>
+
+<table class="table">
+  <thead class="table-light">
+    <tr>
+      <td scope="col">CustomerID</td>
+      <td scope="col">Customer</td>
+      <td scope="col">Company</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customerDetail of customerDetails">
+      <td scope="col">{{ customerDetail.customerID }}</td>
+      <td scope="col">{{ customerDetail.firstName + " "+ customerDetail.lastName}}</td>
+      <td scope="col">{{ customerDetail.companyName }}</td>
+    </tr>
+  </tbody>
+</table>
+

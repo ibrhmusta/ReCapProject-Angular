@@ -1,0 +1,64 @@
+<div class="card" style="width: 100%; margin-top: 20px">
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" >
+    <div class="carousel-inner">
+      <div class="carousel-item" *ngFor="let carImage of carImagePaths; index as i; first as firstImage" [ngClass]="{ active: firstImage }" >
+        <!-- diziye gelen ilk elemaı firstImage atar. Daha sonra, ngClass normal class ın içerisine karşısında yazan boolean değer true ysa active komutu ekliyor. -->
+        <img [src]="imageUrl + carImage.imagePath" class="d-block w-100" alt="..." style="height: 400px; width: 700px; object-fit: cover" />
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+    </div>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ carDetail?.brandName }} || {{ carDetail?.brandModel }}
+    </h5>
+    <p class="card-text">{{ carDetail?.description }}</p>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><b>Color :</b> {{ carDetail?.colorName }}</li>
+    <li class="list-group-item">
+      <b>Model Year :</b> {{ carDetail?.modelYear }}
+    </li>
+    <li class="list-group-item">
+      <b>Daily Price :</b> {{ carDetail?.dailyPrice }} ₺
+    </li>
+    <li class="list-group-item">
+      <b>Status : </b> {{ carDetail?.isRentable ? "Available" : "Not Available" }}
+    </li>
+  </ul>
+</div>
+<!-- <app-carrentaldetail></app-carrentaldetail> -->
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+  <button type="button" class="btn btn-dark text-center btn-lg me-md-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+    Rent This Car
+  </button>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <!-- ortada kalmasını istemiyorsan modal-dialog-centered kaldır -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Rent This Car</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+
+      <app-carrentaldetail [car]="carDetail"></app-carrentaldetail>
+    </div>
+  </div>
+</div>
